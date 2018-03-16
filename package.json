@@ -4,9 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cf": "cloudform ./main.ts > template.json",
+    "cfrun": "npm run cf && aws --profile=opt-rd --region=ap-northeast-1 cloudformation update-stack --template-body file://template.json  --stack-name=simenyan-stack"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "cloudform": "^1.0.4",
+    "ts-node": "^5.0.1"
+  }
 }
